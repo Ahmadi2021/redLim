@@ -11,7 +11,7 @@ class CommentController extends Controller
         public function store(Request $request)
         {
             $user = auth()->user();
-            $comment = $user->comments()->create($request->only(['post_id', 'comments']));
+            $comment = $user->comments()->create($request->only(['post_id', 'comments','parent_id']));
 
             return response()->json(['message' => 'Comment created successfully']);
         }

@@ -20,12 +20,12 @@ class PostController extends Controller
     }
 
     public function store(PostRequest $request)
-        {
-            $user = auth()->user();
-            $post = $user->posts()->create($request->only(['title', 'text']));
+    {
+        $user = auth()->user();
+        $post = $user->posts()->create($request->only(['title', 'text']));
 
-            return response()->json(['message' => 'Post created successfully']);
-        }
+        return response()->json(['message' => 'Post created successfully']);
+    }
 
 
         public function indexUserPosts($userId)
@@ -41,7 +41,7 @@ class PostController extends Controller
 
         public function update(PostRequest $request, $id)
             {
-                $post = auth()->user()->posts()->findOrFail($id);
+               $post = auth()->user()->posts()->findOrFail($id);
                 $post->update($request->only(['title', 'text']));
 
                 return response()->json(['posts'=>$post]);
@@ -52,6 +52,6 @@ class PostController extends Controller
                 $post = auth()->user()->posts()->findOrFail($id);
                 $post->delete();
 
-                return response()->json(['message' => 'Post deleted successfully']);
+                return response()->json(['message' => 'Post Deleted successfully']);
             }
 }
