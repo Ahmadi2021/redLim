@@ -11,7 +11,8 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'text'
+        'text',
+        'user_id',
     ];
 
     public function comments(){

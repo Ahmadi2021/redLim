@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class PostController extends Controller
         return response()->json(['posts'=>$posts]);
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
         {
             $user = auth()->user();
             $post = $user->posts()->create($request->only(['title', 'text']));
@@ -38,7 +39,7 @@ class PostController extends Controller
             }
 
 
-        public function update(Request $request, $id)
+        public function update(PostRequest $request, $id)
             {
                 $post = auth()->user()->posts()->findOrFail($id);
                 $post->update($request->only(['title', 'text']));

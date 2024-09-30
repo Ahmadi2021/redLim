@@ -34,11 +34,7 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        // $request->validate([
-        //     'phone' => 'required|string',
-        //     'otp' => 'required|numeric',
-        // ]);
-
+    
         // Retrieve OTP from Redis
         // $storedOtp = Redis::get('otp:' . $request->phone);
 
